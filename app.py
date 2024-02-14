@@ -7,8 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from gradio_client import Client
 from flask import Flask, request, jsonify
 
-client = Client("https://atulit23-google-flan-t5.hf.space/")
-
 app = Flask(__name__)
 
 def scrape_data(amazon_url):
@@ -59,6 +57,7 @@ def scrape_data(amazon_url):
 
 @app.route('/compare_descriptions', methods=['GET'])
 def compare_descriptions():
+    client = Client("https://atulit23-google-flan-t5.hf.space/")
     amazon_url = request.args.get('amazon_url')
 
     print(amazon_url)
